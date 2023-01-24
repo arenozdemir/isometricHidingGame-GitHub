@@ -24,7 +24,7 @@ public class EnemyScript : MonoBehaviour
     }
     private void Update()
     {
-        MovementHandler();
+        //MovementHandler();
     }
 
     #region "FOV""
@@ -62,30 +62,10 @@ public class EnemyScript : MonoBehaviour
     }
     #endregion
 
-    #region Movement
-    private void MovementHandler()
+    public void RotateEnemy()
     {
-        if (inSight)
-        {
-            StartCoroutine(AnimationHandler());
-            Vector3 dir = player.transform.position - transform.position;
-            transform.Translate(dir.normalized * Time.deltaTime * 1.5f, Space.World);
-            Quaternion lookRotation = Quaternion.LookRotation(dir);
-            Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * 10f).eulerAngles;
-            transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-        }
-    }
-
-    #endregion
-
-    IEnumerator AnimationHandler()
-    {
-        
-        while (inSight)
-        {
-            yield return new WaitForSeconds(1.5f);
-            animator.SetBool(isRunningHash, true);
-        }
-        animator.SetBool(isRunningHash, false);
+        Vector3 direction = player.transform.position - transform.position;
+        direction.y = 0;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * 5);
     }
 }
