@@ -1,2 +1,0 @@
-# isometricHidingGame-GitHub
- 

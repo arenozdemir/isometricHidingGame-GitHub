@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
@@ -70,7 +69,7 @@ public class EnemyScript : MonoBehaviour
         {
             StartCoroutine(AnimationHandler());
             Vector3 dir = player.transform.position - transform.position;
-            transform.Translate(dir.normalized * Time.deltaTime * 2f, Space.World);
+            transform.Translate(dir.normalized * Time.deltaTime * 1.5f, Space.World);
             Quaternion lookRotation = Quaternion.LookRotation(dir);
             Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * 10f).eulerAngles;
             transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
@@ -84,10 +83,9 @@ public class EnemyScript : MonoBehaviour
         
         while (inSight)
         {
-            yield return null;
+            yield return new WaitForSeconds(1.5f);
             animator.SetBool(isRunningHash, true);
         }
         animator.SetBool(isRunningHash, false);
     }
-    
 }
