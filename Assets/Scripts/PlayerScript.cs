@@ -57,4 +57,9 @@ public class PlayerScript : MonoBehaviour
         direction.y = 0;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * 5);
     }
+
+    #region Throwing Rock
+
+
+    #endregion
 }
