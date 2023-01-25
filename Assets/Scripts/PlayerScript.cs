@@ -10,7 +10,6 @@ public class PlayerScript : MonoBehaviour
     int walkingHash;
     bool isWalking;
     #endregion
-
     CharacterController controller;
     NavMeshAgent meshAgent;
     private void Awake()
@@ -19,6 +18,7 @@ public class PlayerScript : MonoBehaviour
         meshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
     }
+    
     private void Start()
     {
         walkingHash = Animator.StringToHash("isWalking");
@@ -31,7 +31,7 @@ public class PlayerScript : MonoBehaviour
     }
     private void MoveToPosition()
     {
-        if (Mouse.current.leftButton.IsPressed())
+        if (Mouse.current.rightButton.IsPressed())
         {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
@@ -57,4 +57,5 @@ public class PlayerScript : MonoBehaviour
         direction.y = 0;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * 5);
     }
+    
 }
