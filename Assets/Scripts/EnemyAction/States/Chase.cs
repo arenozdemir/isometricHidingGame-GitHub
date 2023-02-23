@@ -11,8 +11,8 @@ public class Chase : StateBase
     }
     private void Update()
     {
-        agent.SetDestination(player.transform.position);
-        enemyScript.RotateEnemy();
+        /*agent.SetDestination(player.transform.position);
+        enemyScript.RotateEnemy();*/
     }
     
 }

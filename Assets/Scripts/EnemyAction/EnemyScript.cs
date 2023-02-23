@@ -22,11 +22,6 @@ public class EnemyScript : MonoBehaviour
         StartCoroutine(FOVRoutine());
         isRunningHash = Animator.StringToHash("isRunning");
     }
-    private void Update()
-    {
-        //MovementHandler();
-    }
-
     #region "FOV""
     private IEnumerator FOVRoutine()
     {
@@ -61,7 +56,6 @@ public class EnemyScript : MonoBehaviour
             inSight = false;
     }
     #endregion
-
     public void RotateEnemy()
     {
         Vector3 direction = player.transform.position - transform.position;

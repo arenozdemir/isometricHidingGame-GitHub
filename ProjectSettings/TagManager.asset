@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Shootable
   - Enemy
+  - Rock
   layers:
   - Default
   - TransparentFX
